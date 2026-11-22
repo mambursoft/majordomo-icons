@@ -1,0 +1,84 @@
+diff --git a/templates/actions_log/actions_log_edit.html b/templates/actions_log/actions_log_edit.html
+index 13d9e959..e2965c2f 100644
+--- a/templates/actions_log/actions_log_edit.html
++++ b/templates/actions_log/actions_log_edit.html
+@@ -26,7 +26,7 @@
+  [#else ID#]
+  <button type="submit" name="subm" value="Add" class="btn btn-primary"><#LANG_ADD#></button>
+  [#endif ID#]
+- <a href="?" class="btn btn-default "><#LANG_CANCEL#></a>
++ <a href="?" class="btn btn-default "><i class="glyphicon glyphicon-remove"></i> <#LANG_CANCEL#></a>
+ <input type="hidden" name="id" value="<#ID#>">
+ <input type="hidden" name="view_mode" value="<#VIEW_MODE#>">
+ <input type="hidden" name="edit_mode" value="<#EDIT_MODE#>">
+diff --git a/templates/commands/commands_edit.html b/templates/commands/commands_edit.html
+index e42d39c4..83bbd7a8 100644
+--- a/templates/commands/commands_edit.html
++++ b/templates/commands/commands_edit.html
+@@ -457,7 +457,7 @@
+ <button type="submit" class="btn btn-default btn-primary" name="subm"><#LANG_ADD#></button>
+ [#endif ID#]
+ 
+-<a class="btn btn-default" href="?"><#LANG_CANCEL#></a>
++<a class="btn btn-default" href="?"><i class="glyphicon glyphicon-remove"></i> <#LANG_CANCEL#></a>
+ 
+  [#if ID!=""#]
+  <a class="btn btn-default" href="?id=<#ID#>&view_mode=clone_commands" onClick="return confirm('<#LANG_ARE_YOU_SURE#>')"><#LANG_MAKE_COPY#></a>
+diff --git a/templates/connect/calls.html b/templates/connect/calls.html
+index 5dbdf1cb..35409ef5 100644
+--- a/templates/connect/calls.html
++++ b/templates/connect/calls.html
+@@ -1,6 +1,6 @@
+ [#if VIEW_MODE=""#]
+ <div>
+-<a href="?tab=<#TAB#>&view_mode=edit_calls&id=" class="btn btn-default"><#LANG_ADD#></a>
++<a href="?tab=<#TAB#>&view_mode=edit_calls&id=" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i> <#LANG_ADD#></a>
+ [#if CALLS#]
+ <a href="?tab=<#TAB#>&view_mode=sync" class="btn btn-default"><#LANG_SEND_TO_CONNECT#></a>
+ [#endif CALLS#]
+@@ -23,8 +23,8 @@
+   <#LANG_VALUE_IMAGE_URL#>: https://connect.majordomohome.com/public.php?key=[#PUBLIC_KEY#]&img=value&<br/>
+    &lt;img src="https://connect.majordomohome.com/public.php?key=[#PUBLIC_KEY#]&img=value&"&gt;
+   [#else#]<#LANG_NA#>[#endif#]</td>
+-  <td valign="top"><a href="?tab=<#TAB#>&view_mode=edit_calls&id=[#ID#]" class="btn btn-default"><#LANG_EDIT#></a>
+-  <a href="?tab=<#TAB#>&view_mode=delete_calls&id=[#ID#]" class="btn btn-default" onClick="return confirm('<#LANG_ARE_YOU_SURE#>')"><#LANG_DELETE#></a>
++  <td valign="top"><a href="?tab=<#TAB#>&view_mode=edit_calls&id=[#ID#]" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i> <#LANG_EDIT#></a>
++  <a href="?tab=<#TAB#>&view_mode=delete_calls&id=[#ID#]" class="btn btn-default" onClick="return confirm('<#LANG_ARE_YOU_SURE#>')"><i class="glyphicon glyphicon-trash"></i> <#LANG_DELETE#></a>
+   </td>
+  </tr>
+  [#end CALLS#]
+diff --git a/templates/control_access/control_access.html b/templates/control_access/control_access.html
+index 6b30bf2b..2eab65ad 100644
+--- a/templates/control_access/control_access.html
++++ b/templates/control_access/control_access.html
+@@ -34,7 +34,7 @@ h3 {
+ <input type="password" name="psw" class=form />
+ <input type="hidden" name="mode" value="check" />
+ <input type="hidden" name="action" value="enter" />
+-<div><button type="submit" class="btn btn-large btn-success"><#LANG_LOGIN#></button></div>
++<div><button type="submit" class="btn btn-large btn-success"><i class="glyphicon glyphicon-log-in"></i> <#LANG_LOGIN#></button></div>
+ </form>
+ 
+ <script language="javascript">
+@@ -110,7 +110,7 @@ document.frmEnter.login.focus();
+    [#endif ID#]
+    [#end USERS#]
+    <tr>
+-    <td colspan=2>[ <a href="?action=<#ACTION#>&mode=edit"><b><#LANG_ADD_NEW_USER#></a> ]</td>
++    <td colspan=2>[ <a href="?action=<#ACTION#>&mode=edit"><i class="glyphicon glyphicon-user-plus"></i> <b><#LANG_ADD_NEW_USER#></a> ]</td>
+    </tr>
+   </table>
+   </td>
+diff --git a/templates/default.html b/templates/default.html
+index 2cc77a4a..0266a1ff 100644
+--- a/templates/default.html
++++ b/templates/default.html
+@@ -38,7 +38,7 @@
+                     </td>
+                     [#endif#]
+                     <td align="center">
+-                        <a href="<#ROOTHTML#>admin.php" class="btn btn-default btn-sm"><#LANG_CONTROL_PANEL#></a>
++                        <a href="<#ROOTHTML#>admin.php" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-cog"></i> <#LANG_CONTROL_PANEL#></a>
+                     </td>
+                     [#if HIDE_TERMINALS!="1"#]
+                     <form action="<#ROOTHTML#>" method="get" name="frmSettings">
