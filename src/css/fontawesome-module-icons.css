@@ -1,0 +1,27 @@
+/*
+ * Базовый стиль замены иконок модулей.
+ * Подключите его после fontawesome-compat.css и добавьте класс fa-module-icons.
+ * Конкретные модули включаются сгенерированным файлом cms/icons/icons-enabled.css
+ * через интерфейс ?action=icons.
+ */
+.fa-module-icons a.leftmenutab > img,
+.fa-module-icons a.top-menu > img,
+.fa-module-icons a[href*="action="] > img[src*="img/modules/"] {
+    display: none !important;
+}
+
+.fa-module-icons a.leftmenutab::before,
+.fa-module-icons a.top-menu::before,
+.fa-module-icons a[href*="action="]::before {
+    font-family: "Font Awesome 7 Free" !important;
+    font-weight: 900 !important;
+    display: inline-block;
+    width: 20px;
+    margin-right: 6px;
+    text-align: center;
+    line-height: 1;
+    color: var(--fa-icon-color, #607d8b);
+    font-size: 16px;
+    vertical-align: -2px;
+    content: "\f015";
+}

@@ -1,0 +1,40 @@
+/*
+ * Опциональный стиль для «Простых устройств»: растровые device-icon
+ * заменяются цветными глифами. Добавьте класс fa-devices на контейнер.
+ */
+.fa-devices .device-icon {
+    background-image: none !important;
+    position: relative;
+}
+
+.fa-devices .device-icon::before {
+    font-family: "Font Awesome 7 Free" !important;
+    font-weight: 900 !important;
+    content: "\f2db";
+    color: #607d8b;
+    font-size: 28px;
+    line-height: 40px;
+    text-align: center;
+    display: block;
+    width: 40px;
+    height: 40px;
+}
+
+.fa-devices .device-icon.temperature::before { content: "\f491"; color: #e74c3c; }
+.fa-devices .device-icon.thermostat::before { content: "\f491"; color: #d35400; }
+.fa-devices .device-icon.humidity::before,
+.fa-devices .device-icon.moisture::before,
+.fa-devices .device-icon.leak::before { content: "\f043"; color: #3498db; }
+.fa-devices .device-icon.light::before { content: "\f0eb"; color: #f1c40f; }
+.fa-devices .device-icon.motion::before { content: "\f554"; color: #8e44ad; }
+.fa-devices .device-icon.openclose::before { content: "\f52b"; color: #16a085; }
+.fa-devices .device-icon.power::before,
+.fa-devices .device-icon.button::before { content: "\f205"; color: #27ae60; }
+.fa-devices .device-icon.current::before,
+.fa-devices .device-icon.voltage::before { content: "\f0e7"; color: #e67e22; }
+.fa-devices .device-icon.pressure::before { content: "\f624"; color: #2980b9; }
+.fa-devices .device-icon.smoke::before { content: "\f06d"; color: #e74c3c; }
+.fa-devices .device-icon.group::before { content: "\f0c0"; color: #607d8b; }
+.fa-devices .device-icon.ac::before { content: "\f2dc"; color: #00acc1; }
+.fa-devices .device-icon.camera::before { content: "\f03d"; color: #34495e; }
+.fa-devices .device-icon.general::before { content: "\f2db"; color: #607d8b; }

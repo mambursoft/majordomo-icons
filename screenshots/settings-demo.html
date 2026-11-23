@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>MajorDoMo — управление иконками</title>
+<link rel="stylesheet" href="demo-icons.css">
+<style>
+body { margin: 0; font-family: Arial, sans-serif; background: #f4f6f8; color: #2c3e50; }
+header { background: #263238; color: #fff; padding: 16px 24px; }
+header h1 { margin: 0; font-size: 21px; }
+.wrap { padding: 18px; max-width: 1100px; }
+.panel { background: #fff; border: 1px solid #dfe4e8; border-radius: 6px; margin-bottom: 14px; }
+.panel h2 { margin: 0; padding: 11px 16px; font-size: 14px; background: #eceff1; border-bottom: 1px solid #dfe4e8; }
+.panel-body { padding: 14px 16px; }
+label.row { display: inline-flex; align-items: center; gap: 8px; width: 260px; padding: 5px 0; font-size: 13px; }
+.grid { display: flex; flex-wrap: wrap; }
+button { background: #2980b9; color: #fff; border: 0; border-radius: 4px; padding: 9px 16px; font-size: 13px; cursor: pointer; }
+code { background: #eef1f3; padding: 2px 5px; border-radius: 3px; }
+.help { font-size: 12px; color: #607d8b; }
+</style>
+</head>
+<body>
+<header><h1>MajorDoMo — управление иконками</h1></header>
+<div class="wrap">
+    <div class="panel">
+        <h2>Что переопределять</h2>
+        <div class="panel-body">
+            <label class="row"><input type="checkbox" checked> Базовые glyphicon (ядро и шаблоны)</label>
+            <label class="row"><input type="checkbox" checked> Простые устройства (device-icon)</label>
+            <label class="row"><input type="checkbox" checked> Иконки модулей (img/modules/*.png)</label>
+            <label class="row"><input type="checkbox"> Служебные ico_*.gif</label>
+        </div>
+    </div>
+    <div class="panel">
+        <h2>Модули</h2>
+        <div class="panel-body fa-module-icons" id="mods"></div>
+    </div>
+    <div class="panel">
+        <div class="panel-body">
+            <button>Сохранить и пересоздать CSS</button>
+            <p class="help">Сгенерированный файл: <code>cms/icons/icons-enabled.css</code></p>
+        </div>
+    </div>
+</div>
+<script>
+var mods = ['dashboard','devices','classes','scenes','settings','control_access','control_modules','saverestore','market','xray','system_errors','connect','commands','patterns','app_player','pinghosts'];
+mods.forEach(function (m) {
+    var label = m.replace(/_/g, ' ');
+    document.getElementById('mods').innerHTML +=
+        '<label class="row"><input type="checkbox" checked> ' + label.charAt(0).toUpperCase() + label.slice(1) + '</label>';
+});
+</script>
+</body>
+</html>

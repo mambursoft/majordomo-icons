@@ -1,0 +1,48 @@
+<div class="container-fluid">
+    <h2>Управление иконками</h2>
+
+    [#if SAVED#]
+    <div class="alert alert-success">Настройки сохранены, CSS пересоздан: <code><#CSS_FILE#></code></div>
+    [#endif SAVED#]
+
+    <form method="post" action="?action=<#ACTION#>&mode=save">
+        <div class="panel panel-default">
+            <div class="panel-heading">Что переопределять</div>
+            <div class="panel-body">
+                [#begin GROUPS#]
+                <div class="checkbox">
+                    <label><input type="checkbox" name="group_<#KEY#>" value="1" [#if ENABLED#]checked[#endif ENABLED#]>
+                        [#if KEY=="core"#]Базовые glyphicon (ядро и шаблоны)
+                        [#endif KEY#][#if KEY=="devices"#]Простые устройства (device-icon)
+                        [#endif KEY#][#if KEY=="modules"#]Иконки модулей (img/modules/*.png)
+                        [#endif KEY#][#if KEY=="admin"#]Служебные ico_*.gif
+                        [#endif KEY#]
+                    </label>
+                </div>
+                [#end GROUPS#]
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Модули</div>
+            <div class="panel-body">
+                <p class="help-block">Если включена замена иконок модулей, выберите, какие именно модули переопределять.</p>
+                <div class="row">
+                [#begin MODULES#]
+                    <div class="col-md-3">
+                        <label>
+                            <input type="checkbox" name="modules[]" value="<#NAME#>" [#if SELECTED#]checked[#endif SELECTED#]>
+                            <i class="glyphicon glyphicon-<#ICON#>"></i> <#TITLE#>
+                        </label>
+                    </div>
+                [#end MODULES#]
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Сохранить и пересоздать CSS</button>
+    </form>
+
+    <p class="help-block">Подключите сгенерированный файл <code><#CSS_FILE#></code> в common_header.html.
+    Для иконок модулей добавьте класс <code>fa-module-icons</code> к меню, для устройств — <code>fa-devices</code>.</p>
+</div>

@@ -1,0 +1,23 @@
+@import url("../src/css/fontawesome-compat.css");
+@import url("../src/css/fontawesome-module-icons.css");
+@import url("../src/css/fontawesome-devices.css");
+
+.fa-module-icons a[href*="action=dashboard"]::before { content: "\f625"; --fa-icon-color: #2980b9; }
+.fa-module-icons a[href*="action=devices"]::before { content: "\f2db"; --fa-icon-color: #e67e22; }
+.fa-module-icons a[href*="action=classes"]::before,
+.fa-module-icons a[href*="action=objects"]::before { content: "\f5fd"; --fa-icon-color: #8e44ad; }
+.fa-module-icons a[href*="action=scenes"]::before { content: "\f00a"; --fa-icon-color: #16a085; }
+.fa-module-icons a[href*="action=settings"]::before { content: "\f013"; --fa-icon-color: #7f8c8d; }
+.fa-module-icons a[href*="action=control_access"]::before { content: "\f3ed"; --fa-icon-color: #c0392b; }
+.fa-module-icons a[href*="action=control_modules"]::before { content: "\f12e"; --fa-icon-color: #2980b9; }
+.fa-module-icons a[href*="action=saverestore"]::before { content: "\f1c0"; --fa-icon-color: #27ae60; }
+.fa-module-icons a[href*="action=market"]::before { content: "\f49e"; --fa-icon-color: #d35400; }
+.fa-module-icons a[href*="action=xray"]::before { content: "\f05a"; --fa-icon-color: #3498db; }
+.fa-module-icons a[href*="action=system_errors"]::before { content: "\f071"; --fa-icon-color: #e74c3c; }
+.fa-module-icons a[href*="action=connect"]::before { content: "\f0c2"; --fa-icon-color: #3f8fd0; }
+.fa-module-icons a[href*="action=commands"]::before { content: "\f120"; --fa-icon-color: #2c3e50; }
+.fa-module-icons a[href*="action=patterns"]::before { content: "\f0ae"; --fa-icon-color: #16a085; }
+.fa-module-icons a[href*="action=app_player"]::before { content: "\f001"; --fa-icon-color: #9b59b6; }
+.fa-module-icons a[href*="action=app_mediabrowser"]::before { content: "\f03e"; --fa-icon-color: #e67e22; }
+.fa-module-icons a[href*="action=calendar"]::before { content: "\f133"; --fa-icon-color: #2980b9; }
+.fa-module-icons a[href*="action=pinghosts"]::before { content: "\f1eb"; --fa-icon-color: #00acc1; }

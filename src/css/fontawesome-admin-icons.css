@@ -1,0 +1,24 @@
+/*
+ * Опциональный стиль для старых служебных картинок ico_*.gif.
+ * Добавьте класс fa-admin-icons на контейнер.
+ */
+.fa-admin-icons a > img[src*="ico_"] { display: none !important; }
+
+.fa-admin-icons a::before {
+    font-family: "Font Awesome 7 Free" !important;
+    font-weight: 900 !important;
+    display: inline-block;
+    width: 16px;
+    margin-right: 5px;
+    color: #607d8b;
+    content: "\f015";
+}
+
+.fa-admin-icons a[href*="mode=edit"]::before { content: "\f303"; color: #2980b9; }
+.fa-admin-icons a[href*="mode=delete"]::before,
+.fa-admin-icons a[href*="view_mode=delete"]::before { content: "\f1f8"; color: #c0392b; }
+.fa-admin-icons a[href*="mode=add"]::before,
+.fa-admin-icons a[href*="view_mode=add"]::before { content: "\f2b0"; color: #27ae60; }
+.fa-admin-icons a[href*="help"]::before,
+.fa-admin-icons a[href*="wiki"]::before { content: "\f05a"; color: #3498db; }
+.fa-admin-icons a[href*="search"]::before { content: "\f002"; color: #7f8c8d; }
