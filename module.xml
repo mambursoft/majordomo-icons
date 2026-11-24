@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module>
+    <name>icons</name>
+    <title>Local icons for MajorDoMo</title>
+    <title_ru>Локальные иконки для MajorDoMo</title_ru>
+    <category>system</category>
+    <author>mambursoft</author>
+    <url>https://github.com/mambursoft/majordomo-icons</url>
+    <version>1.0.0</version>
+    <description>Local Font Awesome Free layer: glyphicon compatibility, coloured device icons, module icons and admin glyphs. No CDN requests.</description>
+    <description_ru>Локальный слой Font Awesome Free: совместимость с glyphicon, цветные иконки устройств, иконки модулей и служебные значки админки. Без обращений к CDN.</description_ru>
+    <support>https://github.com/mambursoft/majordomo-icons/issues</support>
+    <requires></requires>
+</module>

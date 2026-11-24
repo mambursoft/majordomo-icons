@@ -1,0 +1,15 @@
+{
+  "name": "icons",
+  "title": "Icons — локальные иконки без внешних запросов",
+  "module_name": "icons",
+  "version": "1.0.0",
+  "category": "system",
+  "author": "mambursoft",
+  "support": "https://github.com/mambursoft/majordomo-icons/issues",
+  "repository": "https://github.com/mambursoft/majordomo-icons",
+  "min_php": "7.3",
+  "tested_php": "8.2",
+  "description": "Локальный слой Font Awesome Free вместо растровых иконок MajorDoMo: совместимость с glyphicon, цветные иконки устройств, иконки модулей и служебные значки админки. Без обращений к CDN — работает в автономной сети.",
+  "description_en": "Local Font Awesome Free layer for MajorDoMo: drop-in glyphicon compatibility, coloured device icons, module icons and admin glyphs. No CDN requests, suitable for isolated networks.",
+  "requires": []
+}
