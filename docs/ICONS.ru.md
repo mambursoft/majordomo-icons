@@ -19,9 +19,11 @@
 
 ## Устройства
 
-`fontawesome-devices.css` использует модификаторы `device-icon`:
+`fontawesome-devices.css` использует классы `device-icon`, которые реально встречаются в актуальных шаблонах ядра:
 
-`temperature`, `thermostat`, `humidity`, `moisture`, `leak`, `light`, `motion`, `openclose`, `power`, `button`, `current`, `voltage`, `pressure`, `smoke`, `group`, `ac`, `camera`, `general`.
+`temperature`, `thermostat`, `humidity`, `moisture`, `leak`, `light-sensor`, `motion`, `openclose`, `power-sensor`, `button`, `current-sensor`, `voltage-sensor`, `pressure`, `smoke`, `group_state`, `ac`, `camera`, `general-sensor`.
+
+Старые имена `light`, `power`, `current`, `voltage`, `group`, `general` в шаблонах ядра больше не используются. Замена применяется только к иконкам **без** собственного `background-image` в атрибуте `style`: растровые спрайты с пользовательским изображением и partial-обновление виджета остаются нетронутыми. Состояния `on`/`off` имеет приоритет над типом устройства.
 
 ## Модули
 

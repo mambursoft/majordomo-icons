@@ -17,6 +17,20 @@ function icons_base_path()
     return ROOT . 'cms' . DIRECTORY_SEPARATOR . 'icons' . DIRECTORY_SEPARATOR;
 }
 
+/**
+ * Современное ядро само подключает css/fontawesome-compat.css в common_header.html.
+ * Повторный @import в этом случае не нужен: он только дублирует запрос и может
+ * перекрыть исправленную версию ядра более старой копией модуля.
+ */
+function icons_core_compat_linked()
+{
+    $header = ROOT . 'templates' . DIRECTORY_SEPARATOR . 'common_header.html';
+    if (!is_file($header) || !is_file(ROOT . 'css' . DIRECTORY_SEPARATOR . 'fontawesome-compat.css')) {
+        return false;
+    }
+    return strpos(file_get_contents($header), 'css/fontawesome-compat.css') !== false;
+}
+
 function icons_config()
 {
     $config = icons_config_default();
@@ -62,7 +76,7 @@ function icons_module_map()
         'classes' => array('layer-group', 'f5fd', '#8e44ad'),
         'objects' => array('layer-group', 'f5fd', '#8e44ad'),
         'scenes' => array('table-cells', 'f00a', '#16a085'),
-        'settings' => array('gear', 'f013', '#7f8c8d'),
+        'settings' => array('gear', 'f013', 'var(--mj-color-muted, #7f8c8d)'),
         'control_access' => array('shield-halved', 'f3ed', '#c0392b'),
         'control_modules' => array('puzzle-piece', 'f12e', '#2980b9'),
         'saverestore' => array('database', 'f1c0', '#27ae60'),
@@ -85,7 +99,7 @@ function icons_module_map()
         'terminals' => array('terminal', 'f120', '#2c3e50'),
         'layouts' => array('layer-group', 'f5fd', '#8e44ad'),
         'events' => array('bell', 'f0f3', '#e67e22'),
-        'default' => array('house', 'f015', '#607d8b'),
+        'default' => array('house', 'f015', 'var(--mj-color-muted, #607d8b)'),
     );
 }
 
@@ -119,7 +133,7 @@ function icons_build_css($config = null)
     }
     $groups = $config['groups'];
     $css = "/* MajorDoMo icons: сгенерировано интерфейсом ?action=icons */\n";
-    if (!empty($groups['core'])) {
+    if (!empty($groups['core']) && !icons_core_compat_linked()) {
         $css .= "@import url(\"../../css/fontawesome-compat.css\");\n";
     }
     if (!empty($groups['devices'])) {

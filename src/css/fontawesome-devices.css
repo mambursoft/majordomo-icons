@@ -1,18 +1,24 @@
 /*
- * Опциональный стиль для «Простых устройств»: растровые device-icon
- * заменяются цветными глифами. Добавьте класс fa-devices на контейнер.
+ * Опциональный стиль для «Простых устройств» MajorDoMo.
+ *
+ * Современное ядро снова использует растровые спрайты и задаёт некоторым
+ * иконкам собственный background-image прямо в style. Поэтому замена
+ * применяется только к иконкам без inline-изображения: выбранные пользователем
+ * картинки и partial-обновление виджета (mjApplyWidgetHTML) остаются
+ * нетронутыми. Добавьте класс fa-devices на контейнер.
  */
-.fa-devices .device-icon {
+.fa-devices .device-icon:not([style*="background-image"]) {
     background-image: none !important;
+    background-color: transparent !important;
     position: relative;
 }
 
-.fa-devices .device-icon::before {
+.fa-devices .device-icon:not([style*="background-image"])::before {
     font-family: "Font Awesome 7 Free" !important;
     font-weight: 900 !important;
     content: "\f2db";
-    color: #607d8b;
-    font-size: 28px;
+    color: var(--mj-widget-icon-fg, var(--mj-color-muted, #607d8b));
+    font-size: var(--mj-widget-icon-size, 36px);
     line-height: 40px;
     text-align: center;
     display: block;
@@ -20,21 +26,30 @@
     height: 40px;
 }
 
-.fa-devices .device-icon.temperature::before { content: "\f491"; color: #e74c3c; }
-.fa-devices .device-icon.thermostat::before { content: "\f491"; color: #d35400; }
+/* Классы устройств в актуальных шаблонах ядра. */
+.fa-devices .device-icon.temperature::before,
+.fa-devices .device-icon.thermostat::before { content: "\f491"; color: #e74c3c; }
 .fa-devices .device-icon.humidity::before,
 .fa-devices .device-icon.moisture::before,
 .fa-devices .device-icon.leak::before { content: "\f043"; color: #3498db; }
-.fa-devices .device-icon.light::before { content: "\f0eb"; color: #f1c40f; }
+.fa-devices .device-icon.light-sensor::before { content: "\f0eb"; color: #f1c40f; }
 .fa-devices .device-icon.motion::before { content: "\f554"; color: #8e44ad; }
 .fa-devices .device-icon.openclose::before { content: "\f52b"; color: #16a085; }
-.fa-devices .device-icon.power::before,
-.fa-devices .device-icon.button::before { content: "\f205"; color: #27ae60; }
-.fa-devices .device-icon.current::before,
-.fa-devices .device-icon.voltage::before { content: "\f0e7"; color: #e67e22; }
+.fa-devices .device-icon.power-sensor::before,
+.fa-devices .device-icon.button::before,
+.fa-devices .device-icon.ac::before { content: "\f205"; color: #27ae60; }
+.fa-devices .device-icon.current-sensor::before,
+.fa-devices .device-icon.voltage-sensor::before { content: "\f0e7"; color: #e67e22; }
 .fa-devices .device-icon.pressure::before { content: "\f624"; color: #2980b9; }
 .fa-devices .device-icon.smoke::before { content: "\f06d"; color: #e74c3c; }
-.fa-devices .device-icon.group::before { content: "\f0c0"; color: #607d8b; }
-.fa-devices .device-icon.ac::before { content: "\f2dc"; color: #00acc1; }
+.fa-devices .device-icon.group_state::before { content: "\f0c0"; color: #607d8b; }
 .fa-devices .device-icon.camera::before { content: "\f03d"; color: #34495e; }
-.fa-devices .device-icon.general::before { content: "\f2db"; color: #607d8b; }
+.fa-devices .device-icon.general-sensor::before { content: "\f2db"; color: #607d8b; }
+
+/* Состояние имеет приоритет над типом: включается последними правилами. */
+.fa-devices .device-icon.on:not([style*="background-image"])::before {
+    color: var(--mj-widget-icon-on, #2e7d32);
+}
+.fa-devices .device-icon.off:not([style*="background-image"])::before {
+    color: var(--mj-widget-icon-off, #6a6a6a);
+}

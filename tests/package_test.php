@@ -86,5 +86,14 @@ if (is_file($archive)) {
     icons_test('archive', false, 'dist/icons.tgz не собран');
 }
 
+$compat = file_get_contents($root . 'src/css/fontawesome-compat.css');
+icons_test('compat_no_catch_all', strpos($compat, '.glyphicon::before { content') === false);
+icons_test('compat_mappings', preg_match_all('/\.glyphicon-[a-z-]+::before \{ content: "[^"]+" !important; \}/', $compat) >= 65);
+$devices = file_get_contents($root . 'src/css/fontawesome-devices.css');
+icons_test('devices_current_classes', strpos($devices, '.device-icon.light-sensor') !== false);
+icons_test('devices_inline_safe', strpos($devices, ':not([style*="background-image"])') !== false);
+$patch = file_get_contents($root . 'template-icons.patch');
+icons_test('patch_obsolete', strpos($patch, 'уже включены в ядро') !== false);
+
 echo $fail === 0 ? "ALL OK\n" : "FAILED: $fail\n";
 exit($fail === 0 ? 0 : 1);
