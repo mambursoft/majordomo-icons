@@ -1,6 +1,8 @@
 # Локальные иконки для MajorDoMo
 
-Пакет заменяет растровые иконки MajorDoMo на локальную копию **Font Awesome Free 7.3.1**. Ни один ресурс не загружается из интернета — решение подходит для автономной установки (DMZ, 100% Privacy & Local Execution, обсуждение в `sergejey/majordomo#1321` и `#1322`).
+Пакет дополняет локальный слой **Font Awesome Free 7.3.1** для MajorDoMo. Ни один ресурс не загружается из интернета — решение подходит для автономной установки (DMZ, 100% Privacy & Local Execution, обсуждение в `sergejey/majordomo#1321`, `#1322`, `#1342`, `#1426`).
+
+Актуальное ядро уже содержит `css/fontawesome-compat.css` и локальные шрифты Font Awesome. Модуль синхронизирован с этой версией и добавляет только дополнительные группы иконок (устройства, модули, админка).
 
 ![Результат замены иконок](screenshots/icons-demo.png)
 
@@ -8,7 +10,7 @@
 
 | Файл | Назначение |
 |---|---|
-| `css/fontawesome-compat.css` | Совместимость с классами Bootstrap 3 `glyphicon-*`; шаблоны ядра править не нужно |
+| `css/fontawesome-compat.css` | Копия исправленного слоя ядра: только сопоставленные `glyphicon-*` заменяются Font Awesome, остальные сохраняют штатный шрифт |
 | `css/fontawesome-devices.css` | Цветные шрифтовые иконки «Простых устройств» (`device-icon.temperature`, `.humidity`, `.light`, …) |
 | `css/fontawesome-module-icons.css` | База для замены `img/modules/*.png` |
 | `css/fontawesome-admin-icons.css` | Замена служебных `ico_*.gif` |
@@ -47,6 +49,14 @@
 После сохранения создаётся `cms/icons/icons-enabled.css`, который содержит только включённые группы и выбранные модули. Для групп «модули», «устройства» и «админка» на контейнер нужно повесить класс `fa-module-icons`, `fa-devices` или `fa-admin-icons`.
 
 Подробнее: [CONFIG.ru.md](docs/CONFIG.ru.md), [ICONS.ru.md](docs/ICONS.ru.md), [TROUBLESHOOTING.ru.md](docs/TROUBLESHOOTING.ru.md).
+
+## Совместимость с ядром
+
+- `css/fontawesome-compat.css` в пакете идентичен исправленной версии ядра (коммит `8e220311`): 65 сопоставленных классов, `content` с `!important`, никакого общего правила на голый `.glyphicon`. Несопоставленные глифы остаются штатными.
+- Если ядро уже подключает `css/fontawesome-compat.css` в `common_header.html`, сгенерированный `icons-enabled.css` **не** добавляет повторный `@import` — нет двойного запроса и нет риска перекрыть исправленную версию.
+- Группа «Простые устройства» использует актуальные классы шаблонов (`light-sensor`, `power-sensor`, `current-sensor`, `voltage-sensor`, `group_state` и др.). Иконки с собственным `background-image` в `style` не перекрываются, поэтому partial-обновление виджета (`mjApplyWidgetHTML`) работает без артефактов.
+- Цвета берутся из токенов ядра `--mj-color-*`, `--mj-widget-icon-fg/on/off` с fallback-значениями — иконки остаются читаемыми в тёмной теме.
+- `template-icons.patch` больше не нужен: все пять правок разметки уже есть в ядре. Файл оставлен только для совместимости со старыми инструкциями.
 
 ## Проверка
 

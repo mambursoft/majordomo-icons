@@ -20,7 +20,7 @@
     margin-right: 6px;
     text-align: center;
     line-height: 1;
-    color: var(--fa-icon-color, #607d8b);
+    color: var(--fa-icon-color, var(--mj-color-muted, #607d8b));
     font-size: 16px;
     vertical-align: -2px;
     content: "\f015";
